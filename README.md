@@ -29,26 +29,6 @@ Backend: Node.js with Express.js
 
 Database: MySQL
 
-Hosting/Deployment: (Optional: AWS / Heroku / Local Server)
-
-Project Structure
-AGRONEO/
-│── backend/              # Express.js API
-│   ├── routes/           # API routes for crops & auth
-│   ├── models/           # Database models (MySQL)
-│   ├── controllers/      # Business logic
-│   └── server.js         # Entry point
-│
-│── frontend/             # Web Portal (HTML, CSS, JS)
-│   ├── index.html        # Landing/Login page
-│   ├── register.html     # Admin registration
-│   ├── dashboard.html    # Upload/View crop rates
-│   └── assets/           # CSS, JS, images
-│
-│── database/             # SQL scripts
-│   └── agroneo.sql
-│
-└── README.md             # Project documentation
 
 2. Backend Setup
 cd backend
