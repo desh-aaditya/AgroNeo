@@ -1,4 +1,5 @@
-GRONEO Web Portal
+
+# AGRONEO Web Portal
 
 The AGRONEO Web Portal is a community-driven agricultural platform designed to provide farmers with daily crop rates based on location and date. It enables admins to manage and upload crop rates, while farmers can access updated rates via API integration in the mobile app.
 
@@ -99,12 +100,4 @@ AI-based Price Forecasting using historical data.
 
 Farmer-to-Farmer Marketplace inside the portal.
 
-Contributors
 
-Project Lead: [Your Name]
-
-Backend Development: [Team Member]
-
-Frontend Development: [Team Member]
-
-Database Management: [Team Member]
