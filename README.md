@@ -1,83 +1,177 @@
+<h1 align="center">AGRONEO</h1>
 
-# AGRONEO Web Portal
+<h2 align="center">Smart Agriculture Web Portal</h2>
 
-The AGRONEO Web Portal is a community-driven agricultural platform designed to provide farmers with daily crop rates based on location and date. It enables admins to manage and upload crop rates, while farmers can access updated rates via API integration in the mobile app.
+<p align="center">
+A full-stack agricultural platform that provides daily crop rates based on location and date, enabling farmers to access transparent and reliable market information.
+</p>
 
-This project bridges the information gap between farmers and market trends, empowering them to make better financial decisions.
+<hr/>
 
-Features
+<h2>About AGRONEO</h2>
 
-Admin Authentication – Secure Login and Registration system.
+<ul>
+  <li>AGRONEO is a community-focused agricultural information system.</li>
+  <li>It bridges the gap between farmers and real-time market pricing.</li>
+  <li>Admins manage and publish crop rate data.</li>
+  <li>Farmers consume accurate, location-based prices via web and mobile applications.</li>
+  <li>The system is designed with scalability and real-world usability in mind.</li>
+</ul>
 
-Crop Rate Management – Admins can add, update, and delete crop rates.
+<hr/>
 
-Location-based Rates – Rates are displayed based on admin’s registered location.
+<h2>Core Features</h2>
 
-Date-wise Records – Farmers can check daily crop rates for any selected date.
+<ul>
+  <li>Secure admin authentication with login and registration.</li>
+  <li>Daily crop rate management with add, update, and delete functionality.</li>
+  <li>Location-based pricing for regional accuracy.</li>
+  <li>Date-wise crop rate records for historical tracking.</li>
+  <li>RESTful API integration using Express.js.</li>
+  <li>Notification support on the mobile application side.</li>
+  <li>Persistent and secure data storage using MySQL.</li>
+</ul>
 
-API Integration – Mobile app fetches crop rates using Express.js APIs.
+<hr/>
 
-Notification System (App Side) – Farmers get alerts when new crop rates are published.
+<h2>Application Screenshots</h2>
 
-Database Storage – All records are stored in a MySQL database for accuracy and security.
+<table align="center">
+  <tr>
+    <td align="center">
+      <h3>Login</h3>
+      <img src="assets/login.png" width="480"/>
+    </td>
+    <td align="center">
+      <h3>Register</h3>
+      <img src="assets/register.png" width="480"/>
+    </td>
+  </tr>
 
-Tech Stack
+  <tr>
+    <td align="center">
+      <h3>Home</h3>
+      <img src="assets/home.png" width="480"/>
+    </td>
+    <td align="center">
+      <h3>Marketplace</h3>
+      <img src="assets/marketplace.png" width="480"/>
+    </td>
+  </tr>
 
-Frontend: HTML, CSS, JavaScript (Attractive UI for Admin Portal)
+  <tr>
+    <td align="center" colspan="2">
+      <h3>Current Crop Prices</h3>
+      <img src="assets/current_price.png" width="960"/>
+    </td>
+  </tr>
+</table>
 
-Backend: Node.js with Express.js
 
-Database: MySQL
+<hr/>
 
+<h2>Technology Stack</h2>
 
-2. Backend Setup
+<h3>Frontend</h3>
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
+
+<h3>Backend</h3>
+<ul>
+  <li>Node.js</li>
+  <li>Express.js</li>
+</ul>
+
+<h3>Database</h3>
+<ul>
+  <li>MySQL</li>
+</ul>
+
+<hr/>
+
+<h2>Backend Setup</h2>
+
+<ul>
+  <li>Navigate to the backend directory.</li>
+  <li>Install required dependencies.</li>
+</ul>
+
+<pre>
 cd backend
 npm install
+</pre>
 
+<ul>
+  <li>Start the backend server.</li>
+</ul>
 
-Configure MySQL database in .env:
-
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=agroneo
-
-
-Run the server:
-
+<pre>
 node server.js
+</pre>
 
-3. Frontend Setup
+<hr/>
 
-Open frontend/index.html in your browser.
+<h2>Frontend Setup</h2>
 
-Connect frontend forms with backend APIs (fetch() in JS).
+<ul>
+  <li>Open <code>frontend/index.html</code> in a web browser.</li>
+  <li>Connect frontend forms to backend APIs using JavaScript <code>fetch()</code>.</li>
+</ul>
 
-API Endpoints
-Method	Endpoint	Description
-POST	/api/auth/register	Register new admin
-POST	/api/auth/login	Admin login
-POST	/api/crops/add	Add crop rate (admin only)
-GET	/api/crops/:location	Get crop rates for a location
-GET	/api/crops/:location/:date	Get crop rates for location & date
-Sustainability & Community Impact
+<hr/>
 
-Farmer Empowerment: Farmers get transparent pricing and can make better selling decisions.
+<h2>REST API Endpoints</h2>
 
-Local Market Strengthening: Encourages fair trade within local communities.
+<ul>
+  <li>
+    <b>POST</b> <code>/api/auth/register</code>
+    <ul>
+      <li>Registers a new admin user.</li>
+    </ul>
+  </li>
 
-Scalability: Can expand to cover multiple regions and integrate with government price indexes.
+  <li>
+    <b>POST</b> <code>/api/auth/login</code>
+    <ul>
+      <li>Authenticates admin and grants access.</li>
+    </ul>
+  </li>
 
-Community Engagement: Helps small-scale farmers stay updated with real-time market data.
+  <li>
+    <b>POST</b> <code>/api/crops/add</code>
+    <ul>
+      <li>Adds a new crop rate (admin-only operation).</li>
+    </ul>
+  </li>
 
-Future Enhancements
+  <li>
+    <b>GET</b> <code>/api/crops/:location</code>
+    <ul>
+      <li>Fetches crop rates for a specific location.</li>
+    </ul>
+  </li>
 
-Mobile App Expansion with push notifications.
+  <li>
+    <b>GET</b> <code>/api/crops/:location/:date</code>
+    <ul>
+      <li>Fetches crop rates for a specific location on a given date.</li>
+    </ul>
+  </li>
+</ul>
 
-Multilingual Support for regional farmers.
+<hr/>
 
-AI-based Price Forecasting using historical data.
+<h2>Sustainability and Community Impact</h2>
 
-Farmer-to-Farmer Marketplace inside the portal.
+<ul>
+  <li>Enables farmers to make informed selling decisions through transparent pricing.</li>
+  <li>Strengthens local agricultural markets by improving price awareness.</li>
+  <li>Designed for scalability across regions and datasets.</li>
+  <li>Supports data-driven decision-making in rural communities.</li>
+</ul>
 
+<hr/>
 
