@@ -79,7 +79,7 @@ const Marketplace = () => {
         date: previewData.date,
       }
 
-      const response = await axios.post("http://localhost:5000/api/crops", dataToSubmit, {
+      const response = await axios.post("https://agroneo-backend.onrender.com/api/crops", dataToSubmit, {
         headers: getAuthHeader(),
       })
 

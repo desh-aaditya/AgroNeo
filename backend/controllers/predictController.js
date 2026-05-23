@@ -5,7 +5,7 @@ const predictPrice = async (req, res) => {
   try {
 
     const response = await axios.post(
-      "http://localhost:5001/predict",
+      "https://agroneo-ml.onrender.com/predict",
       req.body
     );
 
