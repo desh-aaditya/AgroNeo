@@ -34,7 +34,7 @@ const Marketplace = () => {
   const fetchCrops = async () => {
     try {
       setLoading(true)
-      const response = await axios.get("http://localhost:5000/api/crops")
+      const response = await axios.get("https://agroneo-backend.onrender.com/api/crops")
       setCrops(response.data.data || response.data)
       setLoading(false)
     } catch (error) {

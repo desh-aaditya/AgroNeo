@@ -59,7 +59,7 @@ const Prediction = () => {
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/api/predict",
+        "https://agroneo-backend.onrender.com/api/predict",
         {
           crop,
           day

@@ -1,7 +1,7 @@
 const axios = require("axios")
 
 // Replace with your actual API URL when deployed
-const API_BASE_URL = process.env.API_URL || "http://localhost:5000/api"
+const API_BASE_URL = process.env.API_URL || "https://agroneo-backend.onrender.com/api"
 
 /**
  * AgroNeo Mobile API Client
