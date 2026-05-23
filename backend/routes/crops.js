@@ -255,13 +255,11 @@ router.post("/", async (req, res) => {
 
     // Demo admin
 
-    const user = {
+    admin: {
 
-      name: "Admin",
+  name: "Admin"
 
-      _id: "demo-admin"
-
-    }
+}
 
     // Create crop
 
