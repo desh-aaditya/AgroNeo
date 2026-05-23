@@ -1,112 +1,184 @@
 "use client"
 
-import { createContext, useState, useContext, useEffect } from "react"
-import axios from "axios"
+import {
+  createContext,
+  useState,
+  useContext,
+  useEffect
+} from "react"
 
 const AuthContext = createContext()
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () =>
+  useContext(AuthContext)
 
-export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+export const AuthProvider = ({
+  children
+}) => {
 
-  // Set up axios defaults
-  const setupAxiosDefaults = (token) => {
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-    } else {
-      delete axios.defaults.headers.common["Authorization"]
-    }
-  }
+  const [
+    isAuthenticated,
+    setIsAuthenticated
+  ] = useState(false)
+
+  const [user, setUser] =
+    useState(null)
+
+  const [loading, setLoading] =
+    useState(true)
+
+  // Check local storage on refresh
 
   useEffect(() => {
-    // Check if user is logged in
-    const checkAuthStatus = async () => {
-      try {
-        const token = localStorage.getItem("token")
 
-        if (token) {
-          setupAxiosDefaults(token)
+    const token =
+      localStorage.getItem("token")
 
-          try {
-            const response = await axios.get("http://localhost:5000/api/auth/verify")
-            setUser(response.data.user)
-            setIsAuthenticated(true)
-          } catch (error) {
-            console.error("Token verification failed:", error)
-            localStorage.removeItem("token")
-            setupAxiosDefaults(null)
-          }
-        }
-      } catch (error) {
-        console.error("Auth check error:", error)
-        localStorage.removeItem("token")
-        setupAxiosDefaults(null)
-      }
+    const savedUser =
+      localStorage.getItem("user")
 
-      setLoading(false)
+    if (token && savedUser) {
+
+      setIsAuthenticated(true)
+
+      setUser(
+        JSON.parse(savedUser)
+      )
+
     }
 
-    checkAuthStatus()
+    setLoading(false)
+
   }, [])
 
-  const login = async (email, password) => {
+  // LOGIN
+
+  const login = async (
+    email,
+    password
+  ) => {
+
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      })
 
-      const { token, user } = response.data
+      // Demo credentials
 
-      // Store token and set axios defaults
-      localStorage.setItem("token", token)
-      setupAxiosDefaults(token)
+      if (
+        email === "xyz@gmail.com" &&
+        password === "test123"
+      ) {
 
-      setUser(user)
-      setIsAuthenticated(true)
-      return true
+        const demoUser = {
+          name: "Admin",
+          email: email
+        }
+
+        // Fake token
+
+        localStorage.setItem(
+          "token",
+          "demo-token"
+        )
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify(demoUser)
+        )
+
+        setUser(demoUser)
+
+        setIsAuthenticated(true)
+
+        return true
+      }
+
+      return false
+
     } catch (error) {
-      console.error("Login error:", error)
+
+      console.error(
+        "Login Error:",
+        error
+      )
+
       return false
     }
   }
 
-  const signup = async (name, email, password) => {
+  // SIGNUP
+
+  const signup = async (
+    name,
+    email,
+    password
+  ) => {
+
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+
+      const newUser = {
         name,
-        email,
-        password,
-      })
+        email
+      }
 
-      const { token, user } = response.data
+      localStorage.setItem(
+        "token",
+        "demo-token"
+      )
 
-      // Store token and set axios defaults
-      localStorage.setItem("token", token)
-      setupAxiosDefaults(token)
+      localStorage.setItem(
+        "user",
+        JSON.stringify(newUser)
+      )
 
-      setUser(user)
+      setUser(newUser)
+
       setIsAuthenticated(true)
+
       return true
+
     } catch (error) {
-      console.error("Signup error:", error)
+
+      console.error(
+        "Signup Error:",
+        error
+      )
+
       return false
     }
   }
+
+  // LOGOUT
 
   const logout = () => {
-    localStorage.removeItem("token")
-    setupAxiosDefaults(null)
+
+    localStorage.removeItem(
+      "token"
+    )
+
+    localStorage.removeItem(
+      "user"
+    )
+
     setUser(null)
+
     setIsAuthenticated(false)
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, signup, logout, loading }}>
+
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        user,
+        login,
+        signup,
+        logout,
+        loading
+      }}
+    >
+
       {children}
+
     </AuthContext.Provider>
+
   )
 }

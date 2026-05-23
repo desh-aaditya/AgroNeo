@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 # Load model
 model = joblib.load("crop_price_model.pkl")
 crop_encoder = joblib.load("crop_encoder.pkl")
@@ -52,4 +52,4 @@ def predict():
         }), 500
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(host="0.0.0.0", port=5001)
