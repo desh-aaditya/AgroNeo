@@ -1,52 +1,115 @@
 const mongoose = require("mongoose")
 
 const CropSchema = new mongoose.Schema({
+
   cropName: {
+
     type: String,
+
     required: true,
-    index: true, // Add index for faster queries by crop name
+
+    index: true,
+
   },
+
   Maxprice: {
+
     type: Number,
+
     required: true,
+
   },
+
   Minprice: {
+
     type: Number,
+
     required: true,
+
   },
+
   Avgprice: {
+
     type: Number,
+
     required: true,
+
   },
+
   location: {
+
     type: String,
+
     required: true,
-    index: true, // Add index for faster location-based queries
+
+    index: true,
+
   },
+
   date: {
+
     type: Date,
+
     required: true,
-    index: true, // Add index for date-based queries and sorting
+
+    index: true,
+
   },
+
+  // OPTIONAL ADMIN
+
   admin: {
+
     name: {
+
       type: String,
-      required: true,
+
+      default: "Admin",
+
     },
+
     id: {
+
       type: mongoose.Schema.Types.ObjectId,
+
       ref: "User",
-      required: true,
+
+      required: false,
+
     },
+
   },
+
   createdAt: {
+
     type: Date,
+
     default: Date.now,
+
   },
+
 })
 
-// Add compound index for common query patterns
-CropSchema.index({ location: 1, date: -1 })
-CropSchema.index({ cropName: 1, date: -1 })
+// Indexes
 
-module.exports = mongoose.model("Crop", CropSchema)
+CropSchema.index({
+
+  location: 1,
+
+  date: -1
+
+})
+
+CropSchema.index({
+
+  cropName: 1,
+
+  date: -1
+
+})
+
+module.exports =
+  mongoose.model(
+    "Crop",
+    CropSchema
+  )
